@@ -3,18 +3,18 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        message: 'Hadling Get'
+        message: 'Orders fetched'
     });
 });
 
 router.post('/', (req, res, next) => {
     res.status(201).json({
-        message: 'Hadling Post'
+        message: 'Order created'
     });
 });
 
-router.get('/:productId', (req, res, next) => {
-    const id = req.params.productId;
+router.get('/:orderId', (req, res, next) => {
+    const id = req.params.orderId;
     if (id === 'special') {
         res.status(200).json({
             message: 'Hadling Special'
@@ -26,15 +26,15 @@ router.get('/:productId', (req, res, next) => {
     }
 });
 
-router.patch('/:productId', (req, res, next) => {
+router.patch('/:orderId', (req, res, next) => {
     res.status(200).json({
-        message: 'Updated product'
+        message: 'Updated order'
     });
 });
 
-router.delete('/:productId', (req, res, next) => {
+router.delete('/:orderId', (req, res, next) => {
     res.status(200).json({
-        message: 'Deleted product'
+        message: 'Deleted order'
     });
 });
 

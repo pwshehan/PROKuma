@@ -1,6 +1,0 @@
-{
-    "env": {
-        "MONGO_CONNECTION": "mongodb://localhost/PROKuma",
-        "JWT_KEY": "NICElook"
-    }
-}

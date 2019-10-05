@@ -2,28 +2,14 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const orderModule = require('../models/orders');
-const Product = require('../models/products');
+const checkAuth = require('../middleware/check-auth');
 
-router.get('/', (req, res, next) => {
-    orderModule.find()
-    .populate('product')
-    .exec()
-    .then(docs => {
-        console.log(docs);
-        if (docs.length > 0) {
-            res.status(200).json(docs);
-        } else {
-            res.status(404).json({message: 'No valid entry found'});
-        }
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
-        });
-    });
-}); 
+const orderModule = require('../models/orders');
+// const Product = require('../models/products');
+
+const OrdersController = require('../controllers/orders');
+
+router.get('/', checkAuth, OrdersController.orders_get_all);
 
 router.post('/', (req, res, next) => {
     const order = new orderModule({

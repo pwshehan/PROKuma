@@ -3,19 +3,15 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const mongoose = require('mongoose'); 
-require('dotenv').config();
+
+const consts = require('./api/utils/constants');
+const dbprovider = require('./api/database/dbprovider');
 
 const productsRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user');
 
-mongoose.connect(process.env.MONGO_CONNECTION,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    },
-);
+dbprovider();
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));

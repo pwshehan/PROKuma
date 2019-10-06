@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const consts = require('../utils/constants');
 
 const User = require('../models/user');
 
@@ -64,7 +65,7 @@ exports.log_in = (req, res, next) => {
                 email: user[0].email,
                 userId: user[0]._id
               },
-              process.env.JWT_KEY,
+              consts.jwt_key,
               {
                   expiresIn: "1h"
               }

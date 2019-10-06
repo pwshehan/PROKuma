@@ -1,3 +1,6 @@
 require('dotenv').config();
 
-exports.api_key = "bcfc312c-c206-4a43-834e-01b9f94fe121";
+exports.api_key_mobile = process.env.API_KEY_MOB;
+exports.api_key_web = process.env.API_KEY_WEB;
+
+exports.jwt_key = process.env.APP_SECRET + '**JWT';

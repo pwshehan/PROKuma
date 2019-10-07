@@ -4,6 +4,7 @@ const orderModule = require('../models/orders');
 const Product = require('../models/products');
 
 exports.orders_get_all = (req, res, next) => {
+  console.log(req.query.apiKey);
   orderModule.find()
     .select('product quantity _id')
     .populate('product', 'name')

@@ -2,7 +2,8 @@ const consts = require('../utils/constants');
 
 module.exports = (req, res, next) => {
     let validate = false;
-    let clientApiKey = req.query.apiKey
+    req.hashValidation = false;
+    let clientApiKey = req.query.apiKey;
     if(!clientApiKey){
         validate = false;
     } else {

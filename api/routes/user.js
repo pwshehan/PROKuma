@@ -34,11 +34,17 @@ router.post("/my", function(req, res, next) {
 
     const validateInputs = Utils.requiredFieldsValidated(req.body, main_fields);
     if (validateInputs != null) {
-        throw validateInputs;
+      throw validateInputs;
     }
 
-    console.log(validateInputs);
-    res.json({ep:'hj',message:validateInputs});
+    if (req.hashValidation) {
+      const validateHash = Utils.hashValidated(req.body, main_fields);
+      if (validateHash != null) {
+        throw validateHash;
+      }
+    }
+
+    res.json({ep:'hj'});
 });
 
 module.exports = router;
